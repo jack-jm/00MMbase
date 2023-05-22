@@ -1,4 +1,4 @@
-import pandas,ki njh
+import pandas
 
 # Functions go here
 
