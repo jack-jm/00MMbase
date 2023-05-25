@@ -1,0 +1,16 @@
+---- Mini Movie Fundraiser Ticket Data (26/05/2023) ----
+
+     Ticket Price Surcharge  Total Profit
+Name                                     
+a           $7.50     $0.00  $7.50  $2.50
+b           $7.50     $0.00  $7.50  $2.50
+c           $7.50     $0.00  $7.50  $2.50
+
+----- Ticket Cost / Profit -----
+Total Ticket Sales: $22.5
+Total Profit: $7.5
+
+*** All tickets have been sold ***
+
+---- Raffle Winner ----
+The winner of the raffle is b. They have won $$7.50. Their ticket is free.
