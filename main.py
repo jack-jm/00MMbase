@@ -89,13 +89,13 @@ def currency(x):
 # main routine starts here
 
 # Set maximum number of tickets below
-MAX_TICKETS = 3
+MAX_TICKETS = 5
 tickets_sold = 0
 
 yes_no_list = ["yes", "no"]
 payment_list = ["cash", "credit"]
 
-# List to hold ticket details
+# Lists to hold ticket details
 all_names = []
 all_ticket_costs = []
 all_surcharges = []
@@ -185,7 +185,7 @@ day = date.strftime("%d")
 month = date.strftime("%m")
 year = date.strftime("%Y")
 
-heading = "---- Mini Movie Fundraiser Ticket Data ({}/{}/{}) ----\n".format(day, month, year)
+heading = "\n---- Mini Movie Fundraiser Ticket Data ({}/{}/{}) ----\n".format(day, month, year)
 filename = "MMF_{}_{}_{}".format(year, month, day)
 
 # Change frame to a string so we can export it to file
@@ -193,13 +193,16 @@ mini_movie_string = pandas.DataFrame.to_string(mini_movie_frame)
 
 # Create stringsfor printing
 ticket_cost_heading = "\n----- Ticket Cost / Profit -----"
-total_ticket_sales = "Total Ticket Sales: ${}".format(total)
-total_profit = "Total Profit: ${}".format(profit)
+total_ticket_sales = "Total Ticket Sales: ${:.2f}".format(total)
+total_profit = "Total Profit: ${:.2f}".format(profit)
 
-sales_status = "\n*** All tickets have been sold ***"
+if tickets_sold == MAX_TICKETS:
+  sales_status = "\n*** All the tickets have been sold ***"
+else:
+  sales_status = "\n **** You have sold {} out of {} tickets ****".format(tickets_sold, MAX_TICKETS)
 
 winner_heading = "\n---- Raffle Winner ----"
-winner_text = "The winner of the raffle is {}. They have won ${}. Their ticket is free.".format(winner_name, total_won)
+winner_text = "The winner of the raffle is {}. They have won {:.2f}. Their ticket is free.".format(winner_name, total_won)
 
 # List holding to content to print/write to file
 to_write = [heading, mini_movie_string, ticket_cost_heading, total_ticket_sales, total_profit, sales_status, winner_heading, winner_text]
@@ -219,10 +222,3 @@ for item in to_write:
 
 # close file
 text_file.close()
-
-print( )
-# Output number of tickets sold
-if tickets_sold == MAX_TICKETS:
-  print("Congratulations, you have sold all of the tickets.")
-else:
-  print("You have sold {} ticket/s. There are {} ticket/s remaining".format(tickets_sold, MAX_TICKETS - tickets_sold))
